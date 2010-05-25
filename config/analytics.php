@@ -11,6 +11,6 @@ return array
     'google' => array
     (
         'asynchronous'  => TRUE,    // default = TRUE
-        'id'            => 'UA-XXXXXXX-1',
+        'id'            => 'UA-XXXXXXX-X',
     ),
 );
