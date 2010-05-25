@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 /**
- * Google analytics functionality.
+ * Google analytics.
  *
  * @package     MMI Analytics
  * @author      Me Make It
@@ -15,7 +15,7 @@ class Kohana_MMI_Analytics_Google extends Kohana_MMI_Analytics
     protected $_service = self::GOOGLE;
 
     /**
-     * Get analytics javascript.
+     * Get analytics JavaScript.
      *
      * @return  string
      */
@@ -35,7 +35,7 @@ class Kohana_MMI_Analytics_Google extends Kohana_MMI_Analytics
     }
 
     /**
-     * Get non-asynchronous analytics javascript.
+     * Get synchronous JavaScript.
      *
      * @param   string  tracking id
      * @return  string
@@ -45,12 +45,8 @@ class Kohana_MMI_Analytics_Google extends Kohana_MMI_Analytics
 return <<<EOJS
 <script type="text/javascript">
 //<![CDATA[
-    var gaJsHost = (('https:' == document.location.protocol) ? 'https://ssl.' : 'http://www.');
+    var gaJsHost = (('https:' === document.location.protocol) ? 'https://ssl.' : 'http://www.');
     document.write(unescape('%3Cscript src="' + gaJsHost + 'google-analytics.com/ga.js" type="text/javascript"%3E%3C/script%3E'));
-//]]>
-</script>
-<script type="text/javascript">
-//<![CDATA[
     try
     {
         var pageTracker = _gat._getTracker('$id');
@@ -63,7 +59,7 @@ EOJS;
     }
 
     /**
-     * Get asynchronous analytics javascript.
+     * Get asynchronous JavaScript.
      *
      * @param   string  tracking id
      * @return  string
@@ -77,8 +73,10 @@ return <<<EOJS
     _gaq.push(['_setAccount', '$id']);
     _gaq.push(['_trackPageview']);
     (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
     })();
 //]]>
