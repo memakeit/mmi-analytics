@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 /**
- * Core analytics functionality.
+ * Analytics functionality.
  *
  * @package     MMI Analytics
  * @author      Me Make It
@@ -15,7 +15,6 @@ abstract class Kohana_MMI_Analytics
     // Class constants
     const CLICKY = 'clicky';
     const GOOGLE = 'google';
-    const PIWIK = 'piwik';
 
     /**
      * @var boolean turn debugging on?
@@ -51,7 +50,7 @@ abstract class Kohana_MMI_Analytics
     public static function factory($driver = self::GOOGLE)
     {
         $class = 'MMI_Analytics_'.ucfirst($driver);
-        if( ! class_exists($class))
+        if ( ! class_exists($class))
         {
             MMI_Log::log_error(__METHOD__, __LINE__, $class.' class does not exist');
             throw new Kohana_Exception(':class class does not exist in :method.', array
