@@ -1,20 +1,16 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-// Analytics settings
+// Analytics configuration
 return array
 (
     'clicky' => array
     (
-        'id' => 191247,
+        'asynchronous'  => TRUE,    // default = TRUE
+        'id'            => 123456,
     ),
     'google' => array
     (
-        'asynchronous'  => TRUE,
-        'id'            => 'UA-8480467-1',
-    ),
-    'piwik' => array
-    (
-        'id'    => 191247,
-        'url'   => 'www.memakeit.com/',  // without leading 'http://' and with a trailing slash
+        'asynchronous'  => TRUE,    // default = TRUE
+        'id'            => 'UA-XXXXXXX-1',
     ),
 );
