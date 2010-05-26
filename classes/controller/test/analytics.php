@@ -9,28 +9,28 @@
  */
 class Controller_Test_Analytics extends Controller
 {
-    /**
-     * @var boolean turn debugging on?
-     **/
-    public $debug = TRUE;
+	/**
+	 * @var boolean turn debugging on?
+	 **/
+	public $debug = TRUE;
 
-    /**
-     * Debug the Clicky analytics output.
-     *
-     * @return  void
-     */
-    public function action_clicky()
-    {
-        MMI_Debug::dump(Request::factory('mmi/analytics/clicky')->execute()->response, 'analytics/clicky');
-    }
+	/**
+	 * Debug the Clicky analytics output.
+	 *
+	 * @return  void
+	 */
+	public function action_clicky()
+	{
+		MMI_Debug::dump(Request::factory('mmi/analytics/clicky')->execute()->response, 'analytics/clicky');
+	}
 
-    /**
-     * Debug the Google analytics output.
-     *
-     * @return  void
-     */
-    public function action_google()
-    {
-        MMI_Debug::dump(Request::factory('mmi/analytics/google')->execute()->response, 'analytics/google');
-    }
+	/**
+	 * Debug the Google analytics output.
+	 *
+	 * @return  void
+	 */
+	public function action_google()
+	{
+		MMI_Debug::dump(Request::factory('mmi/analytics/google')->execute()->response, 'analytics/google');
+	}
 } // End Controller_Test_Analytics
