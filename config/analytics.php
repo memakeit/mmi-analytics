@@ -4,13 +4,13 @@
 return array
 (
     'clicky' => array
-	(
-		'asynchronous'	=> TRUE,    // default = TRUE
-		'id'			=> 123456,
-	),
+    (
+        'asynchronous'  => TRUE,    // default = TRUE
+        'id'			=> 123456,
+    ),
     'google' => array
-	(
-		'asynchronous'	=> TRUE,    // default = TRUE
-		'id'			=> 'UA-XXXXXXX-X',
-	),
+    (
+        'asynchronous'	=> TRUE,    // default = TRUE
+        'id'			=> 'UA-XXXXXXX-X',
+    ),
 );
