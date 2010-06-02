@@ -42,6 +42,18 @@ abstract class Kohana_MMI_Analytics
     }
 
     /**
+     * Minify the JavaScript.
+     *
+     * @param   string  the JavaScript
+     * @return  string
+     */
+    protected function _minify($js)
+    {
+        require_once Kohana::find_file('vendor', 'jsmin/jsmin_required');
+        return trim(JSMin::minify($js));
+    }
+
+    /**
      * Create an analytics instance.
      *
      * @param   string  type of analytics service to create

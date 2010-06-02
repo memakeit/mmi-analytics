@@ -24,14 +24,33 @@ class Kohana_MMI_Analytics_Google extends Kohana_MMI_Analytics
         $config = Arr::get(self::_get_config(TRUE), $this->_service, array());
         $asynchronous = Arr::get($config, 'asynchronous', TRUE);
         $id = Arr::get($config, 'id', 'UA-XXXXX-X');
+        $minify = Arr::get($config, 'minify', 123456);
+
+        $js = '';
         if ($asynchronous)
         {
-            return $this->_get_asynchronous_js($id);
+            $js = $this->_get_asynchronous_js($id);
         }
         else
         {
-            return $this->_get_js($id);
+            $js = $this->_get_js($id);
         }
+
+        if ($minify)
+        {
+            $js = $this->_minify($js);
+        }
+
+        return <<<EOJS
+<script type="text/javascript">
+//<![CDATA[
+
+/* google analytics */
+$js
+
+//]]>
+</script>
+EOJS;
     }
 
     /**
@@ -43,18 +62,14 @@ class Kohana_MMI_Analytics_Google extends Kohana_MMI_Analytics
     protected function _get_js($id)
     {
         return <<<EOJS
-<script type="text/javascript">
-//<![CDATA[
-    var gaJsHost = (('https:' === document.location.protocol) ? 'https://ssl.' : 'http://www.');
-    document.write(unescape('%3Cscript src="' + gaJsHost + 'google-analytics.com/ga.js" type="text/javascript"%3E%3C/script%3E'));
-    try
-    {
-        var pageTracker = _gat._getTracker('$id');
-        pageTracker._trackPageview();
-    }
-    catch (err) {}
-//]]>
-</script>
+var gaJsHost = (('https:' === document.location.protocol) ? 'https://ssl.' : 'http://www.');
+document.write(unescape('%3Cscript src="' + gaJsHost + 'google-analytics.com/ga.js" type="text/javascript"%3E%3C/script%3E'));
+try
+{
+    var pageTracker = _gat._getTracker('$id');
+    pageTracker._trackPageview();
+}
+catch (err) {}
 EOJS;
     }
 
@@ -67,20 +82,16 @@ EOJS;
     protected function _get_asynchronous_js($id)
     {
         return <<<EOJS
-<script type="text/javascript">
-//<![CDATA[
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '$id']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
-    })();
-//]]>
-</script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', '$id']);
+_gaq.push(['_trackPageview']);
+(function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+})();
 EOJS;
     }
 } // End Kohana_MMI_Analytics_Google
