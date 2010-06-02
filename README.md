@@ -7,5 +7,5 @@ The following providers are included:
  * Clicky
  * Google
 
-To render the analytics JavaScript, echo the result from a request to the analytics provider.  
+To render the JavaScript, echo the result from a request to the analytics provider.  
 > echo Request::factory('mmi/analytics/google')->execute();
