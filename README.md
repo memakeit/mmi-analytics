@@ -13,7 +13,7 @@ Some typical usage scenarios are:
 1 analytics provider (in this example google): 
 > echo Request::factory('mmi/analytics/google')->execute();
 
-Multiple analytics provider (in this example clicky and google): 
+Multiple analytics providers (in this example clicky and google): 
 > echo Request::factory('mmi/analytics/multi/clicky,google')->execute();
 
 Default to using all the analytics providers that have been configured: 
