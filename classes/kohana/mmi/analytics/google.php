@@ -7,7 +7,7 @@
  * @copyright   (c) 2010 Me Make It
  * @license     http://www.memakeit.com/license
  */
-class Kohana_MMI_Analytics_Google extends Kohana_MMI_Analytics
+class Kohana_MMI_Analytics_Google extends MMI_Analytics
 {
     /**
      * @var string service name
@@ -21,7 +21,7 @@ class Kohana_MMI_Analytics_Google extends Kohana_MMI_Analytics
      */
     public function get_js()
     {
-        $config = Arr::get(self::_get_config(TRUE), $this->_service, array());
+        $config = Arr::get(self::get_config(TRUE), $this->_service, array());
         $asynchronous = Arr::get($config, 'asynchronous', TRUE);
         $id = Arr::get($config, 'id', 'UA-XXXXX-X');
         $minify = Arr::get($config, 'minify', 123456);
