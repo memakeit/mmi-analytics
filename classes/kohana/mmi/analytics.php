@@ -80,7 +80,7 @@ abstract class Kohana_MMI_Analytics
      * @param   boolean return the configuration as an array?
      * @return  mixed
      */
-    protected static function _get_config($as_array = FALSE)
+    public static function get_config($as_array = FALSE)
     {
         (self::$_config === NULL) AND self::$_config = Kohana::config('analytics');
         $config = self::$_config;
