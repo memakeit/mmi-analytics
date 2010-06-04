@@ -14,8 +14,28 @@ class Controller_Test_Analytics extends Controller
 	 **/
 	public $debug = TRUE;
 
+    /**
+     * Test analytics for all currently configured services.
+     *
+     * @return  void
+     */
+    public function action_all()
+    {
+        MMI_Debug::dump(Request::factory('mmi/analytics/all')->execute()->response, 'analytics/all');
+    }
+
+    /**
+     * Test analytics for the services specified.
+     *
+     * @return  void
+     */
+    public function action_multi()
+    {
+        MMI_Debug::dump(Request::factory('mmi/analytics/multi/clicky,google')->execute()->response, 'analytics/multi');
+    }
+
 	/**
-	 * Debug the Clicky analytics output.
+	 * Test Clicky analytics.
 	 *
 	 * @return  void
 	 */
@@ -25,7 +45,7 @@ class Controller_Test_Analytics extends Controller
 	}
 
 	/**
-	 * Debug the Google analytics output.
+	 * Test Google analytics.
 	 *
 	 * @return  void
 	 */

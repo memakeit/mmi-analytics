@@ -10,6 +10,30 @@
 class Controller_MMI_Analytics extends Controller
 {
     /**
+     * Set response to the JavaScript for all currently configured services.
+     *
+     * @return  void
+     */
+    public function action_all()
+    {
+        $this->_check_request();
+        $config = MMI_Analytics::get_config(TRUE);
+        $this->request->response = $this->_get_multi_js(array_keys($config));
+    }
+
+    /**
+     * Set response to the JavaScript for the services specified.
+     *
+     * @return  void
+     */
+    public function action_multi()
+    {
+        $this->_check_request();
+        $services = explode(',', $this->request->param('id', ''));
+        $this->request->response = $this->_get_multi_js($services);
+    }
+
+    /**
      * Set response to the Clicky analytics JavaScript.
      *
      * @return  void
@@ -43,5 +67,26 @@ class Controller_MMI_Analytics extends Controller
         {
             throw new Kohana_Request_Exception('Invalid external request.');
         }
+    }
+
+    /**
+     * Generate the analytics JavaScript for multiple services.
+     *
+     * @param   array   the analytics services
+     * @return  string
+     */
+    protected function _get_multi_js($services)
+    {
+        if ( ! is_array($services))
+        {
+            $services = array();
+        }
+
+        $js = '';
+        foreach ($services as $service)
+        {
+            $js .= MMI_Analytics::factory($service)->get_js().PHP_EOL;
+        }
+        return $js;
     }
 } // End Controller_MMI_Analytics
