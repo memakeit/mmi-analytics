@@ -18,5 +18,3 @@ Multiple analytics providers (in this example clicky and google):
 
 Default to using all the analytics providers that have been configured:
 > echo Request::factory('mmi/analytics/all')->execute();
-
-*
