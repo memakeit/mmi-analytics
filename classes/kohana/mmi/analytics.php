@@ -17,6 +17,11 @@ abstract class Kohana_MMI_Analytics
 	const GOOGLE = 'google';
 
 	/**
+	 * @var Kohana_Config analytics settings
+	 */
+	protected static $_config;
+
+	/**
 	 * @var boolean turn debugging on?
 	 **/
 	protected $_debug;
@@ -27,18 +32,25 @@ abstract class Kohana_MMI_Analytics
 	protected $_service  = '?';
 
 	/**
-	 * @var Kohana_Config analytics settings
-	 */
-	protected static $_config;
-
-	/**
-	 * Configure debugging (using the Request instance).
+	 * Initialize debugging (using the Request instance).
 	 *
 	 * @return	void
 	 */
 	public function __construct()
 	{
 		$this->_debug = (isset(Request::instance()->debug)) ? (Request::instance()->debug) : (FALSE);
+	}
+
+	/**
+	 * Get or set whether debugging is enabled.
+	 * This method is chainable when setting a value.
+	 *
+	 * @param	mixed	the value to set
+	 * @return	mixed
+	 */
+	public function debug($value = NULL)
+	{
+		return $this->_get_set('_debug', $value, 'is_bool');
 	}
 
 	/**
@@ -51,6 +63,30 @@ abstract class Kohana_MMI_Analytics
 	{
 		require_once Kohana::find_file('vendor', 'jsmin/jsmin_required');
 		return trim(JSMin::minify($js));
+	}
+
+	/**
+	 * Get or set a class property.
+	 * This method is chainable when setting a value.
+	 *
+	 * @param	string	the name of the class property to set
+	 * @param	mixed	the value to set
+	 * @param	string	the name of the data verification method
+	 * @return	mixed
+	 */
+	protected function _get_set($name, $value = NULL, $verify_method = NULL)
+	{
+		if ( ! empty($verify_method) AND $verify_method($value))
+		{
+			$this->$name = $value;
+			return $this;
+		}
+		elseif (isset($value))
+		{
+			$this->$name = $value;
+			return $this;
+		}
+		return $this->$name;
 	}
 
 	/**
