@@ -11,10 +11,9 @@ Route::set('mmi/analytics', 'mmi/analytics(/<action>(/<id>))')
 // Test route
 if (Kohana::$environment !== Kohana::PRODUCTION)
 {
-	Route::set('test/analytics', 'test/analytics(/<action>)')
+	Route::set('test/analytics', 'test/analytics/<controller>(/<action>)')
 	->defaults(array
 	(
-		'controller'	=> 'analytics',
-		'directory'		=> 'test',
+		'directory'		=> 'test/analytics',
 	));
 }
