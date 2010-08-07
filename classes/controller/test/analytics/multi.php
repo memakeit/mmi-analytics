@@ -21,6 +21,6 @@ class Controller_Test_Analytics_Multi extends Controller
 	 */
 	public function action_index()
 	{
-		MMI_Debug::dead(Request::factory('mmi/analytics/multi/clicky,google')->execute()->response, 'analytics/multi');
+		MMI_Debug::dead(Request::factory('mmi/analytics/multi/clicky'.MMI_Analytics::SEPARATOR.'google')->execute()->response, 'analytics/multi');
 	}
 } // End Controller_Test_Analytics_Multi

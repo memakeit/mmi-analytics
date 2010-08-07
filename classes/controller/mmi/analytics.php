@@ -29,7 +29,7 @@ class Controller_MMI_Analytics extends Controller
 	public function action_multi()
 	{
 		$this->_check_request();
-		$services = explode(',', $this->request->param('id', ''));
+		$services = explode(MMI_Analytics::SEPARATOR, $this->request->param('id', ''));
 		$this->request->response = $this->_get_multi_js($services);
 	}
 

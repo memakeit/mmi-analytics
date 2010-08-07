@@ -16,6 +16,9 @@ abstract class Kohana_MMI_Analytics
 	const CLICKY = 'clicky';
 	const GOOGLE = 'google';
 
+	// Other constants
+	const SEPARATOR = '|';
+
 	/**
 	 * @var Kohana_Config analytics settings
 	 */

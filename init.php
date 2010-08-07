@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 // MMI route (used for internal requests)
-Route::set('mmi/analytics', 'mmi/analytics(/<action>(/<id>))')
+Route::set('mmi/analytics', 'mmi/analytics/<action>(/<id>)')
 ->defaults(array
 (
 	'controller'	=> 'analytics',

@@ -22,7 +22,7 @@ Single analytics provider (google):
 
 Multiple analytics providers (clicky and google):
 
-	echo Request::factory('mmi/analytics/multi/clicky,google')->execute();
+	echo Request::factory('mmi/analytics/multi/clicky|google')->execute();
 
 All analytics providers (that have been configured):
 
