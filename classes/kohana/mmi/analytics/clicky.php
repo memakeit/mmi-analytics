@@ -21,10 +21,10 @@ class Kohana_MMI_Analytics_Clicky extends MMI_Analytics
 	 */
 	public function get_js()
 	{
-		$config = Arr::get(self::get_config(TRUE), $this->_service, array());
+		$config = self::get_config()->get($this->_service, array());
 		$asynchronous = Arr::get($config, 'asynchronous', TRUE);
 		$id = Arr::get($config, 'id', 123456);
-		$minify = Arr::get($config, 'minify', 123456);
+		$minify = Arr::get($config, 'minify', FALSE);
 
 		$js = '';
 		if ($asynchronous)

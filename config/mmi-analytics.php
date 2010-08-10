@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-// Analytics configuration
+// MMI analytics configuration
 return array
 (
 	'clicky' => array
