@@ -121,7 +121,7 @@ abstract class Kohana_MMI_Analytics
 	 */
 	public static function get_config($as_array = FALSE)
 	{
-		(self::$_config === NULL) AND self::$_config = Kohana::config('analytics');
+		(self::$_config === NULL) AND self::$_config = Kohana::config('mmi-analytics');
 		$config = self::$_config;
 		if ($as_array)
 		{
