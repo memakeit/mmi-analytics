@@ -7,7 +7,7 @@
  * @copyright	(c) 2010 Me Make It
  * @license		http://www.memakeit.com/license
  */
-class Controller_Test_Analytics_Multi extends Controller
+class Controller_MMI_Analytics_Test_Multi extends Controller
 {
 	/**
 	 * @var boolean turn debugging on?
@@ -21,6 +21,12 @@ class Controller_Test_Analytics_Multi extends Controller
 	 */
 	public function action_index()
 	{
-		MMI_Debug::dead(Request::factory('mmi/analytics/multi/clicky'.MMI_Analytics::SEPARATOR.'google')->execute()->response, 'analytics/multi');
+		$route = Route::get('mmi/analytics/hmvc')->uri(array
+		(
+			'action'		=> 'index',
+			'controller'	=> 'multi',
+			'id'			=> 'clicky'.MMI_Analytics::SEPARATOR.'google',
+		));
+		MMI_Debug::dead(Request::factory($route)->execute()->response, 'mmi/analytics/hmvc/multi');
 	}
-} // End Controller_Test_Analytics_Multi
+} // End Controller_MMI_Analytics_Test_Multi

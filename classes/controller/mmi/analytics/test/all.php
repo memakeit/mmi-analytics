@@ -7,7 +7,7 @@
  * @copyright	(c) 2010 Me Make It
  * @license		http://www.memakeit.com/license
  */
-class Controller_Test_Analytics_All extends Controller
+class Controller_MMI_Analytics_Test_All extends Controller
 {
 	/**
 	 * @var boolean turn debugging on?
@@ -21,6 +21,7 @@ class Controller_Test_Analytics_All extends Controller
 	 */
 	public function action_index()
 	{
-		MMI_Debug::dead(Request::factory('mmi/analytics/all')->execute()->response, 'analytics/all');
+		$route = Route::get('mmi/analytics/hmvc')->uri(array('controller' => 'all'));
+		MMI_Debug::dead(Request::factory($route)->execute()->response, 'mmi/analytics/hmvc/all');
 	}
-} // End Controller_Test_Analytics_All
+} // End Controller_MMI_Analytics_Test_All

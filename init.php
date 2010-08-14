@@ -1,19 +1,18 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-// MMI route (used for internal requests)
-Route::set('mmi/analytics', 'mmi/analytics/<action>(/<id>)')
+// HMVC routes
+Route::set('mmi/analytics/hmvc', 'mmi/analytics/hmvc/<controller>(/<action>(/<id>))')
 ->defaults(array
 (
-	'controller'	=> 'analytics',
-	'directory'		=> 'mmi',
+	'directory' => 'mmi/analytics/hmvc',
 ));
 
-// Test route
+// Test routes
 if (Kohana::$environment !== Kohana::PRODUCTION)
 {
-	Route::set('test/analytics', 'test/analytics/<controller>(/<action>)')
+	Route::set('mmi/analytics/test', 'mmi/analytics/test/<controller>(/<action>)')
 	->defaults(array
 	(
-		'directory'		=> 'test/analytics',
+		'directory' => 'mmi/analytics/test',
 	));
 }

@@ -7,7 +7,7 @@
  * @copyright	(c) 2010 Me Make It
  * @license		http://www.memakeit.com/license
  */
-class Controller_Test_Analytics_Clicky extends Controller
+class Controller_MMI_Analytics_Test_Clicky extends Controller
 {
 	/**
 	 * @var boolean turn debugging on?
@@ -21,6 +21,7 @@ class Controller_Test_Analytics_Clicky extends Controller
 	 */
 	public function action_index()
 	{
-		MMI_Debug::dead(Request::factory('mmi/analytics/clicky')->execute()->response, 'analytics/clicky');
+		$route = Route::get('mmi/analytics/hmvc')->uri(array('controller' => 'clicky'));
+		MMI_Debug::dead(Request::factory($route)->execute()->response, 'mmi/analytics/hmvc/clicky');
 	}
-} // End Controller_Test_Analytics_Clicky
+} // End Controller_MMI_Analytics_Test_Clicky
