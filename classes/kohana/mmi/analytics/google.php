@@ -6,6 +6,7 @@
  * @author		Me Make It
  * @copyright	(c) 2010 Me Make It
  * @license		http://www.memakeit.com/license
+ * @link		http://mathiasbynens.be/notes/async-analytics-snippet
  */
 class Kohana_MMI_Analytics_Google extends MMI_Analytics
 {
@@ -82,16 +83,14 @@ EOJS;
 	protected function _get_asynchronous_js($id)
 	{
 		return <<<EOJS
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', '$id']);
-_gaq.push(['_trackPageview']);
-(function() {
-	var ga = document.createElement('script');
-	ga.type = 'text/javascript';
-	ga.async = true;
-	ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
-})();
+var _gaq = [['_setAccount', '$id'], ['_trackPageview']];
+(function(d, t) {
+	var g = d.createElement(t),
+		s = d.getElementsByTagName(t)[0];
+	g.async = true;
+	g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g, s);
+})(document, 'script');
 EOJS;
 	}
 } // End Kohana_MMI_Analytics_Google
