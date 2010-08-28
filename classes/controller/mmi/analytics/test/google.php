@@ -22,6 +22,6 @@ class Controller_MMI_Analytics_Test_Google extends Controller
 	public function action_index()
 	{
 		$route = Route::get('mmi/analytics/hmvc')->uri(array('controller' => 'google'));
-		MMI_Debug::dead(Request::factory($route)->execute()->response, 'mmi/analytics/hmvc/google');
+		MMI_Debug::dump(Request::factory($route)->execute()->response, 'mmi/analytics/hmvc/google');
 	}
 } // End Controller_MMI_Analytics_Test_Google

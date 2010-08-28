@@ -22,6 +22,6 @@ class Controller_MMI_Analytics_Test_Clicky extends Controller
 	public function action_index()
 	{
 		$route = Route::get('mmi/analytics/hmvc')->uri(array('controller' => 'clicky'));
-		MMI_Debug::dead(Request::factory($route)->execute()->response, 'mmi/analytics/hmvc/clicky');
+		MMI_Debug::dump(Request::factory($route)->execute()->response, 'mmi/analytics/hmvc/clicky');
 	}
 } // End Controller_MMI_Analytics_Test_Clicky

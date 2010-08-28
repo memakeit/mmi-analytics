@@ -27,6 +27,6 @@ class Controller_MMI_Analytics_Test_Multi extends Controller
 			'controller'	=> 'multi',
 			'id'			=> 'clicky'.MMI_Analytics::SEPARATOR.'google',
 		));
-		MMI_Debug::dead(Request::factory($route)->execute()->response, 'mmi/analytics/hmvc/multi');
+		MMI_Debug::dump(Request::factory($route)->execute()->response, 'mmi/analytics/hmvc/multi');
 	}
 } // End Controller_MMI_Analytics_Test_Multi
