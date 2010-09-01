@@ -46,10 +46,9 @@ abstract class Kohana_MMI_Analytics
 
 	/**
 	 * Get or set whether debugging is enabled.
-	 * This method is chainable when setting a value.
 	 *
-	 * @param	mixed	the value to set
-	 * @return	mixed
+	 * @param	boolean	the value to set
+	 * @return	boolean
 	 */
 	public function debug($value = NULL)
 	{
@@ -70,7 +69,6 @@ abstract class Kohana_MMI_Analytics
 
 	/**
 	 * Get or set a class property.
-	 * This method is chainable when setting a value.
 	 *
 	 * @param	string	the name of the class property to set
 	 * @param	mixed	the value to set
@@ -82,12 +80,10 @@ abstract class Kohana_MMI_Analytics
 		if ( ! empty($verify_method) AND $verify_method($value))
 		{
 			$this->$name = $value;
-			return $this;
 		}
 		elseif (isset($value))
 		{
 			$this->$name = $value;
-			return $this;
 		}
 		return $this->$name;
 	}
