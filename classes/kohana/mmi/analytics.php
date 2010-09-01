@@ -32,7 +32,7 @@ abstract class Kohana_MMI_Analytics
 	/**
 	 * @var string service name
 	 */
-	protected $_service  = '?';
+	protected $_service = '?';
 
 	/**
 	 * Initialize debugging (using the Request instance).
@@ -107,8 +107,8 @@ abstract class Kohana_MMI_Analytics
 			MMI_Log::log_error(__METHOD__, __LINE__, $class.' class does not exist');
 			throw new Kohana_Exception(':class class does not exist in :method.', array
 			(
-				':class'    => $class,
-				':method'   => __METHOD__
+				':class'	=> $class,
+				':method'	=> __METHOD__
 			));
 		}
 		return new $class;

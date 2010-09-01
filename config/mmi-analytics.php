@@ -5,7 +5,7 @@ return array
 (
 	'clicky' => array
 	(
-		'asynchronous'  => TRUE,	// default = TRUE
+		'asynchronous'	=> TRUE,	// default = TRUE
 		'id'			=> 123456,
 		'minify'		=> FALSE,	// default = FALSE
 	),
