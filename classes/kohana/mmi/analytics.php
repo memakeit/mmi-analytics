@@ -78,7 +78,7 @@ abstract class Kohana_MMI_Analytics
 	 * @param	string	the name of the class property to set
 	 * @param	mixed	the value to set
 	 * @param	string	the name of the data verification method
-	 * @return	$this
+	 * @return	MMI_Analytics
 	 */
 	protected function _set($name, $value = NULL, $verify_method = NULL)
 	{
