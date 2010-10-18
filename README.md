@@ -1,7 +1,7 @@
 # MMI Analytics Module
 
 This module provides analytics functionality by rendering JavaScript using
-configuration parameters.  Analytics providers that do not offer a JavaScript
+configuration parameters. Analytics providers that do not offer a JavaScript
 implementation are not supported.
 
 The following providers are included:

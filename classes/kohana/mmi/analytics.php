@@ -73,7 +73,8 @@ abstract class Kohana_MMI_Analytics
 	}
 
 	/**
-	 * Set a class property.  This method is chainable.
+	 * Set a class property.
+	 * This method is chainable.
 	 *
 	 * @param	string	the name of the class property to set
 	 * @param	mixed	the value to set
