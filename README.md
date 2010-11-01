@@ -11,7 +11,7 @@ The following providers are included:
 
 ## Dependencies
 
-* [mmi-core](http://github.com/memakeit/mmi-core)
+* [mmi-core](http://github.com/memakeit/mmi-core) (only for test controllers)
 
 ## Usage
 To render the JavaScript, echo the result from a request.
@@ -31,9 +31,3 @@ All analytics providers (that have been configured):
 
 ## Test Controllers
 Simple test controllers are located in `classes/controller/mmi/analytics/test`.
-They can be accessed at:
-
-* _<your-server>_/mmi/analytics/test/all
-* _<your-server>_/mmi/analytics/test/clicky
-* _<your-server>_/mmi/analytics/test/google
-* _<your-server>_/mmi/analytics/test/multi
