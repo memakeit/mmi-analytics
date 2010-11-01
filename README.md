@@ -30,4 +30,4 @@ All analytics providers (that have been configured):
 	echo Request::factory('mmi/analytics/all')->execute();
 
 ## Test Controllers
-Simple test controllers are located in `classes/controller/mmi/analytics/test`.
+Test controllers are located in `classes/controller/mmi/analytics/test`.
