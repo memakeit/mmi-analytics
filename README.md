@@ -14,6 +14,7 @@ The following analytics providers are included:
 * [mmi-core](http://github.com/memakeit/mmi-core) (only for test controllers)
 
 ## Usage
+
 To render the JavaScript, echo the result from a request.
 Some typical HMVC usage scenarios are:
 
@@ -30,4 +31,5 @@ All analytics providers (that have been configured):
 	echo Request::factory('mmi/analytics/all')->execute();
 
 ## Test Controllers
+
 Test controllers are located in `classes/controller/mmi/analytics/test`.
