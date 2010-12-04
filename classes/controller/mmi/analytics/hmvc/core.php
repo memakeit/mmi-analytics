@@ -17,7 +17,7 @@ abstract class Controller_MMI_Analytics_HMVC_Core extends Controller
 	protected function _check_request()
 	{
 		// Only accept internal requests
-		if ( ! $this->request->internal)
+		if (Request::instance() === Request::current())
 		{
 			throw new Kohana_Request_Exception('Invalid external request.');
 		}
