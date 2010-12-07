@@ -68,7 +68,7 @@ abstract class Kohana_MMI_Analytics
 	 */
 	protected function _minify($js)
 	{
-		if ($file = Kohana::find_file('vendor', 'jsmin/jsmin_required'))
+		if ($file = Kohana::find_file('vendor', 'jsmin/required'))
 		{
 			require_once $file;
 			$js = trim(JSMin::minify($js));
