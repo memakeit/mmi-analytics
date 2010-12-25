@@ -13,6 +13,7 @@ Multiple analytics providers (Clicky and Google):
 	$providers = array(MMI_Analytics::CLICKY, MMI_Analytics::GOOGLE);
 	$route = Route::get('mmi/analytics/hmvc')->uri(array
 	(
+		'action'		=> 'index',
 		'controller'	=> 'multi',
 		'id'			=> implode(MMI_Analytics::SEPARATOR, $providers)
 	));
