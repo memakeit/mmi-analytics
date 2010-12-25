@@ -9,18 +9,16 @@
  */
 abstract class Kohana_MMI_Analytics
 {
-	// Abstract methods
-	abstract public function get_js();
-
 	// Class constants
 	const CLICKY = 'clicky';
 	const GOOGLE = 'google';
+	const PIWIK = 'piwik';
 
 	// Other constants
-	const SEPARATOR = '|';
+	const SEPARATOR = '~';
 
 	/**
-	 * @var Kohana_Config analytics settings
+	 * @var Kohana_Config the analytics settings
 	 */
 	protected static $_config;
 
@@ -30,14 +28,16 @@ abstract class Kohana_MMI_Analytics
 	protected $_debug;
 
 	/**
-	 * @var string service name
+	 * @var string the service name
 	 */
 	protected $_service = '?';
 
 	/**
 	 * Initialize debugging (using the Request instance).
 	 *
+	 * @access	public
 	 * @return	void
+	 * @uses	MMI_Request::debug
 	 */
 	public function __construct()
 	{
@@ -48,6 +48,7 @@ abstract class Kohana_MMI_Analytics
 	 * Get or set whether debugging is enabled.
 	 * This method is chainable when setting a value.
 	 *
+	 * @access	public
 	 * @param	boolean	the value to set
 	 * @return	mixed
 	 */
@@ -61,8 +62,40 @@ abstract class Kohana_MMI_Analytics
 	}
 
 	/**
+	 * Get analytics JavaScript.
+	 *
+	 * @access	public
+	 * @return	string
+	 */
+	public function get_js()
+	{
+		$config = self::get_config();
+		$include_script_tag = $config->get('include_script_tag', TRUE);
+		$config = $config->get('services', array());
+		$service = $this->_service;
+		$config = Arr::get($config, $service, array());
+		$minify = Arr::get($config, 'minify', FALSE);
+		$js = Kostache::factory("mmi/analytics/{$service}")->render();
+		if ($minify)
+		{
+			$js = $this->_minify($js);
+		}
+		$js = "/* {$service} analytics */".PHP_EOL.$js;
+		if ($include_script_tag)
+		{
+			$js = <<<EOJS
+<script type="text/javascript">
+{$js}
+</script>
+EOJS;
+		}
+		return $js;
+	}
+
+	/**
 	 * Minify the JavaScript.
 	 *
+	 * @access	protected
 	 * @param	string	the JavaScript
 	 * @return	string
 	 */
@@ -80,6 +113,7 @@ abstract class Kohana_MMI_Analytics
 	 * Set a class property.
 	 * This method is chainable.
 	 *
+	 * @access	protected
 	 * @param	string	the name of the class property to set
 	 * @param	mixed	the value to set
 	 * @param	string	the name of the data verification method
@@ -101,6 +135,7 @@ abstract class Kohana_MMI_Analytics
 	/**
 	 * Create an analytics instance.
 	 *
+	 * @access	public
 	 * @param	string	the analytics service name
 	 * @return	MMI_Analytics
 	 */
@@ -125,17 +160,17 @@ abstract class Kohana_MMI_Analytics
 	/**
 	 * Get the configuration settings.
 	 *
+	 * @access	public
 	 * @param	boolean	return the configuration as an array?
 	 * @return	mixed
 	 */
 	public static function get_config($as_array = FALSE)
 	{
 		(self::$_config === NULL) AND self::$_config = Kohana::config('mmi-analytics');
-		$config = self::$_config;
 		if ($as_array)
 		{
-			$config = $config->as_array();
+			return self::$_config->as_array();
 		}
-		return $config;
+		return self::$_config;
 	}
 } // End Kohana_MMI_Analytics
