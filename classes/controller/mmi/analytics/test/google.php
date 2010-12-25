@@ -17,6 +17,7 @@ class Controller_MMI_Analytics_Test_Google extends Controller
 	/**
 	 * Test Google analytics.
 	 *
+	 * @access	public
 	 * @return	void
 	 */
 	public function action_index()

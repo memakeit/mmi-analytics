@@ -17,6 +17,7 @@ class Controller_MMI_Analytics_Test_All extends Controller
 	/**
 	 * Test analytics for all currently configured services.
 	 *
+	 * @access	public
 	 * @return	void
 	 */
 	public function action_index()
