@@ -17,15 +17,17 @@ class Controller_MMI_Analytics_Test_Multi extends Controller
 	/**
 	 * Test analytics for the services specified.
 	 *
+	 * @access	public
 	 * @return	void
 	 */
 	public function action_index()
 	{
+		$providers = array(MMI_Analytics::CLICKY, MMI_Analytics::GOOGLE);
 		$route = Route::get('mmi/analytics/hmvc')->uri(array
 		(
 			'action'		=> 'index',
 			'controller'	=> 'multi',
-			'id'			=> 'clicky'.MMI_Analytics::SEPARATOR.'google',
+			'id'			=> implode(MMI_Analytics::SEPARATOR, $providers)
 		));
 		MMI_Debug::dump(Request::factory($route)->execute()->response, 'mmi/analytics/hmvc/multi');
 	}
