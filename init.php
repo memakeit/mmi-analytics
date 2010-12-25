@@ -4,7 +4,6 @@
 Route::set('mmi/analytics/hmvc', 'mmi/analytics/hmvc/<controller>(/<action>(/<id>))')
 ->defaults(array
 (
-	'action'	=> 'index',
 	'directory'	=> 'mmi/analytics/hmvc',
 ));
 
