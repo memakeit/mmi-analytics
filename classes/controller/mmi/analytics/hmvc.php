@@ -7,11 +7,12 @@
  * @copyright	(c) 2010 Me Make It
  * @license		http://www.memakeit.com/license
  */
-abstract class Controller_MMI_Analytics_HMVC_Core extends Controller
+abstract class Controller_MMI_Analytics_HMVC extends Controller
 {
 	/**
 	 * Ensure the request is an internal request.
 	 *
+	 * @access	protected
 	 * @return	void
 	 */
 	protected function _check_request()
@@ -26,6 +27,7 @@ abstract class Controller_MMI_Analytics_HMVC_Core extends Controller
 	/**
 	 * Generate the analytics JavaScript for multiple services.
 	 *
+	 * @access	protected
 	 * @param	array	the analytics services
 	 * @return	string
 	 */
@@ -33,7 +35,7 @@ abstract class Controller_MMI_Analytics_HMVC_Core extends Controller
 	{
 		if ( ! is_array($services))
 		{
-			$services = array();
+			return '';
 		}
 
 		$js = '';
@@ -43,4 +45,4 @@ abstract class Controller_MMI_Analytics_HMVC_Core extends Controller
 		}
 		return $js;
 	}
-} // End Controller_MMI_Analytics_HMVC_Core
+} // End Controller_MMI_Analytics_HMVC

@@ -7,11 +7,12 @@
  * @copyright	(c) 2010 Me Make It
  * @license		http://www.memakeit.com/license
  */
-class Controller_MMI_Analytics_HMVC_Multi extends Controller_MMI_Analytics_HMVC_Core
+class Controller_MMI_Analytics_HMVC_Multi extends Controller_MMI_Analytics_HMVC
 {
 	/**
 	 * Set the response to the JavaScript for the services specified.
 	 *
+	 * @access	public
 	 * @return	void
 	 */
 	public function action_index()
