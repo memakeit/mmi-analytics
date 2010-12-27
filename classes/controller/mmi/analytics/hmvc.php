@@ -20,7 +20,7 @@ abstract class Controller_MMI_Analytics_HMVC extends Controller
 		// Only accept internal requests
 		if (Request::instance() === Request::current() OR ! Request::$is_ajax)
 		{
-			throw new Kohana_Request_Exception('Invalid external request.');
+			throw new Kohana_Request_Exception('Invalid external request');
 		}
 	}
 
