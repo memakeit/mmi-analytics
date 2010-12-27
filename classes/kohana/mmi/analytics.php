@@ -23,43 +23,9 @@ abstract class Kohana_MMI_Analytics
 	protected static $_config;
 
 	/**
-	 * @var boolean turn debugging on?
-	 **/
-	protected $_debug;
-
-	/**
 	 * @var string the service name
 	 */
 	protected $_service = '?';
-
-	/**
-	 * Initialize debugging (using the Request instance).
-	 *
-	 * @access	public
-	 * @return	void
-	 * @uses	MMI_Request::debug
-	 */
-	public function __construct()
-	{
-		$this->_debug = class_exists('MMI_Request') ? MMI_Request::debug() : FALSE;
-	}
-
-	/**
-	 * Get or set whether debugging is enabled.
-	 * This method is chainable when setting a value.
-	 *
-	 * @access	public
-	 * @param	boolean	the value to set
-	 * @return	mixed
-	 */
-	public function debug($value = NULL)
-	{
-		if (func_num_args() === 0)
-		{
-			return $this->_debug;
-		}
-		return $this->_set('_debug', $value, 'is_bool');
-	}
 
 	/**
 	 * Get analytics JavaScript.
@@ -107,29 +73,6 @@ EOJS;
 			$js = trim(JSMin::minify($js));
 		}
 		return $js;
-	}
-
-	/**
-	 * Set a class property.
-	 * This method is chainable.
-	 *
-	 * @access	protected
-	 * @param	string	the name of the class property to set
-	 * @param	mixed	the value to set
-	 * @param	string	the name of the data verification method
-	 * @return	MMI_Analytics
-	 */
-	protected function _set($name, $value = NULL, $verify_method = NULL)
-	{
-		if (empty($verify_method))
-		{
-			$this->$name = $value;
-		}
-		elseif ($verify_method($value))
-		{
-			$this->$name = $value;
-		}
-		return $this;
 	}
 
 	/**
