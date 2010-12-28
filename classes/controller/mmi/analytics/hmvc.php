@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Core analytics HMVC controller.
+ * Base analytics HMVC controller.
  *
  * @package		MMI Analytics
  * @author		Me Make It

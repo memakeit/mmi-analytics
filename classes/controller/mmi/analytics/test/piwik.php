@@ -7,13 +7,8 @@
  * @copyright	(c) 2010 Me Make It
  * @license		http://www.memakeit.com/license
  */
-class Controller_MMI_Analytics_Test_Piwik extends Controller
+class Controller_MMI_Analytics_Test_Piwik extends Controller_MMI_Analytics_Test
 {
-	/**
-	 * @var boolean turn debugging on?
-	 **/
-	public $debug = TRUE;
-
 	/**
 	 * Test Piwik analytics.
 	 *
