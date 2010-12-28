@@ -1,4 +1,4 @@
-# Usage
+# MMI Analytics Usage
 
 To render the analytics JavaScript, echo the result from a request.
 Typical HMVC usage scenarios include:
