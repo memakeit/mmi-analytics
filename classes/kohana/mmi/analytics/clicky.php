@@ -6,6 +6,7 @@
  * @author		Me Make It
  * @copyright	(c) 2010 Me Make It
  * @license		http://www.memakeit.com/license
+ * @link		http://getclicky.com/
  */
 class Kohana_MMI_Analytics_Clicky extends MMI_Analytics
 {
