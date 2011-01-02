@@ -17,16 +17,22 @@ class View_Kohana_MMI_Analytics_Piwik extends View_MMI_Analytics
 
 	/**
 	 * Initialize the view parameters.
+	 * Render the view.
 	 *
-	 * @access	protected
+	 * @access	public
+	 * @param	string 	template
+	 * @param	mixed 	view
+	 * @param	array	partials
 	 * @return	void
 	 */
-	protected function _init()
+	public function render($template = null, $view = null, $partials = null)
 	{
-		parent::_init();
-		if ( ! empty($this->_config))
+		$config = MMI_Analytics::get_config()->get('services', array());
+		$config = Arr::get($config, $this->_service);
+		if ( ! empty($config))
 		{
-			$this->_url = Arr::get($this->_config, 'url');
+			$this->_url = Arr::get($config, 'url');
 		}
+		return parent::render($template, $view, $partials);
 	}
 } // End View_Kohana_MMI_Analytics_Piwik

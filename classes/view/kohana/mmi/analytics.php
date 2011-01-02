@@ -11,11 +11,6 @@
 abstract class View_Kohana_MMI_Analytics extends Kostache
 {
 	/**
-	 * @var array the analytics settings
-	 */
-	protected $_config;
-
-	/**
 	 * @var integer the analytics id
 	 */
 	protected $_id;
@@ -31,7 +26,8 @@ abstract class View_Kohana_MMI_Analytics extends Kostache
 	protected $_use_async;
 
 	/**
-	 * Create and initialize the view.
+	 * Initialize the view parameters.
+	 * Render the view.
 	 *
 	 * @access	public
 	 * @param	string 	template
@@ -39,27 +35,15 @@ abstract class View_Kohana_MMI_Analytics extends Kostache
 	 * @param	array	partials
 	 * @return	void
 	 */
-	public function __construct($template = null, $view = null, $partials = null)
-	{
-		parent::__construct($template, $view, $partials);
-		$this->_init();
-	}
-
-	/**
-	 * Initialize the view parameters.
-	 *
-	 * @access	protected
-	 * @return	void
-	 */
-	protected function _init()
+	public function render($template = null, $view = null, $partials = null)
 	{
 		$config = MMI_Analytics::get_config()->get('services', array());
 		$config = Arr::get($config, $this->_service);
 		if ( ! empty($config))
 		{
-			$this->_config = $config;
 			$this->_id = Arr::get($config, 'id');
 			$this->_use_async = Arr::get($config, 'asynchronous', TRUE);
 		}
+		return parent::render($template, $view, $partials);
 	}
 } // End View_Kohana_MMI_Analytics
