@@ -11,7 +11,7 @@ The following analytics providers are included:
 
 ## Dependencies
 
-* [kostache](https://github.com/zombor/KOstache)
+* [KOstache](https://github.com/zombor/KOstache)
 * [mmi-util](https://github.com/memakeit/mmi-util) (only for test controllers)
 
 ## Documentation
